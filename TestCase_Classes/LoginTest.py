@@ -5,18 +5,16 @@ from selenium import webdriver
 from POM_Files.Home_Page import HomePage
 from POM_Files.Login_Page import SwagLogin
 from POM_Files.Logout import Logout
+from Utility.readProperties import ReadConfig
 
 
 class TestLogin:
-    def test_TC1_Valid_Login(self):
-        driver = webdriver.Edge()
-        driver.maximize_window()
-        driver.get("https://www.saucedemo.com/")
-        driver.implicitly_wait(5)
+    def test_TC1_Valid_Login(self, browser):
+        driver = browser
 
         sl=SwagLogin(driver)
-        sl.uname("standard_user")
-        sl.pwd("secret_sauce")
+        sl.uname(ReadConfig.appCreds("AppCredential","username"))
+        sl.pwd(ReadConfig.appCreds("AppCredential","password"))
         sl.clkbtn()
         time.sleep(5)
 
@@ -31,11 +29,8 @@ class TestLogin:
         else:
             assert False
 
-    def test_TC2_Invalid_Login(self):
-        driver = webdriver.Edge()
-        driver.maximize_window()
-        driver.get("https://www.saucedemo.com/")
-        driver.implicitly_wait(5)
+    def test_TC2_Invalid_Login(self, browser):
+        driver = browser
 
         sl=SwagLogin(driver)
         sl.uname("Pranav")
@@ -51,11 +46,8 @@ class TestLogin:
         else:
             assert False
 
-    def test_TC3_Logout(self):   #Logout Test Case
-        driver = webdriver.Edge()
-        driver.maximize_window()
-        driver.get("https://www.saucedemo.com/")
-        driver.implicitly_wait(5)
+    def test_TC3_Logout(self, browser):   #Logout Test Case
+        driver = browser
 
         sl = SwagLogin(driver)
         sl.uname("standard_user")
