@@ -1,0 +1,5 @@
+28/02/2026 11:06:24: INFO: Valid Username added
+28/02/2026 11:06:24: INFO: Valid Password added
+28/02/2026 11:06:24: INFO: Clicked on Login button after credentials.
+28/02/2026 11:06:33: INFO: Error message correct on login for invalid username and password.
+28/02/2026 11:06:42: INFO: Logout successful
